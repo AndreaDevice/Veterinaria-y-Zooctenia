@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicina Veterinaria y Zootecnia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>MEDICINA VETERINARIA Y ZOOTECNIA</h1>
+    <h3>Asignaturas y Ciclo</h3>
+    <p>Este plan de estudios está diseñado para 3 ciclos de estudio. La calificación mínima aprobatoria es 8.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Asignatura</th>
+                <th>Créditos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="/primerCiclo/AnatomiaVeterinaria1/AnVe1.html">Anatomía Veterinaria 1</a></td>
+                <td id="notaAnVe1">-</td>
+            </tr>
+            <tr>
+                <td><a href="#">Bioquímica</a></td>
+                <td>/10</td>
+            </tr>
+            <tr>
+                <td><a href="#">Comportamiento, Manejo y Bienestar Animal</a></td>
+                <td>/10</td>
+            </tr>
+            <tr>
+                <td><a href="#">Introducción a la Zootecnia</a></td>
+                <td>/10</td>
+            </tr>
+            <tr>
+                <td><a href="#">Manejo y Aprovechamiento de Recursos Naturales</a></td>
+                <td>/10</td>
+            </tr>
+            <tr>
+                <td><a href="#">Metodología de la Investigación</a></td>
+                <td>/10</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Cuando acredites todas las asignaturas con calificaciones aprobatorias, se desbloqueará el siguiente módulo.</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h3>Siguientes ciclos...</h3>
+
+    <footer>
+        <p>&copy; Todos los derechos reservados.</p>
+        <button onclick="reiniciarCalificaciones()">Reiniciar Calificaciones</button>
+    </footer>
+
+    <script>
+        function actualizarNotas() {
+            document.getElementById("notaAnVe1").innerText = localStorage.getItem("AnVe1_promedio") || "-";
+        }
+        window.onload = actualizarNotas;
+    </script>
+    <script>
+        function actualizarNotas() {
+            document.getElementById("notaAnVe1").innerText = localStorage.getItem("AnVe1_promedio") || "-";
+        }
+    
+        function reiniciarCalificaciones() {
+            // Elimina todas las notas guardadas en localStorage
+            localStorage.removeItem("AnVe1_examen1");
+            localStorage.removeItem("AnVe1_examen2");
+            localStorage.removeItem("AnVe1_examen3");
+            localStorage.removeItem("AnVe1_promedio");
+    
+            // Recarga la página para actualizar las notas en pantalla
+            location.reload();
+        }
+    
+        window.onload = actualizarNotas;
+    </script>    
+</body>
+</html>
