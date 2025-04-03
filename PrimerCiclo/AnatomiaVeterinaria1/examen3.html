@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen 2 - Anatomía Veterinaria</title>
+    <script>
+        function calcularNota() {
+            let total = 0;
+            let respuestas = document.querySelectorAll("input[type='radio']:checked");
+
+            respuestas.forEach(r => {
+                total += parseInt(r.value);
+            });
+
+            let notaFinal = (total / respuestas.length).toFixed(1);
+            localStorage.setItem("AnVe1_examen3", notaFinal);
+
+            alert("Tu nota en este examen es: " + notaFinal);
+            calcularPromedio(); // Calcular promedio de los 3 exámenes
+            window.location.href = "../AnVe1.html"; // Volver a la asignatura
+        }
+
+        function calcularPromedio() {
+            let ex1 = parseFloat(localStorage.getItem("AnVe1_examen1")) || 0;
+            let ex2 = parseFloat(localStorage.getItem("AnVe1_examen2")) || 0;
+            let ex3 = parseFloat(localStorage.getItem("AnVe1_examen3")) || 0;
+
+            if (ex1 && ex2 && ex3) {
+                let promedio = ((ex1 + ex2 + ex3) / 3).toFixed(1);
+                localStorage.setItem("AnVe1_promedio", promedio); // Guardar promedio final
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Examen 2 - Anatomía Veterinaria</h2>
+    
+    <form>
+        <p>1. ¿Qué tipo de tejido forma los tendones?</p>
+        <label><input type="radio" name="q1" value="10"> Tejido conectivo denso</label><br>
+        <label><input type="radio" name="q1" value="0"> Tejido óseo</label><br>
+
+        <p>2. ¿Cuál es la función principal del sistema linfático?</p>
+        <label><input type="radio" name="q2" value="10"> Transporte de linfa</label><br>
+        <label><input type="radio" name="q2" value="0"> Control muscular</label><br>
+
+        <button type="button" onclick="calcularNota()">Enviar</button>
+    </form>
+</body>
+</html>
